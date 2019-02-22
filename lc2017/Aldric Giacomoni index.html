@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="(Aldric Giacomoni)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///Users/aldric/src/vendor/reveal.js-3.5.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///Users/aldric/src/vendor/reveal.js-3.5.0/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///Users/aldric/src/vendor/reveal.js-3.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+<section id="slide-org057d54b">
+<h2 id="org057d54b">⚗️ELIXIR! ⚗️</h2>
+<p>
+λ conf 2017 workshop
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgb7cf3a4">
+<h2 id="orgb7cf3a4">"Aldric!"</h2>
+<p>
+That's me.
+</p>
+
+<p>
+Yell that when you're stuck.
+</p>
+
+<p>
+Send flames to /dev/null.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org8c90276">
+<h2 id="org8c90276">Getting in groups and group intros</h2>
+<p>
+Get in groups of four.
+Prefer people you don't know.
+</p>
+<ul>
+<li>Your name</li>
+<li>How you like to receive help</li>
+<li>Your familiarity with functional programming</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org208094d">
+<h2 id="org208094d">Workshop structure</h2>
+<ul>
+<li>3x(25 minutes of work + 5-minute break)</li>
+<li>15-minute break</li>
+<li>rinse and repeat</li>
+<li>also, food somewhere</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org2c8b873">
+<h2 id="org2c8b873">Getting familiar with codio</h2>
+<ul>
+<li>log in</li>
+<li>set up Elixir VM</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org4f8715a">
+<h2 id="org4f8715a">SMALL BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgc2d7931">
+<h2 id="orgc2d7931">The documentation</h2>
+<p>
+Teach a 👤 to 🐟 ...
+</p>
+
+<p>
+<a href="https://hexdocs.pm/elixir/Kernel.html#content">https://hexdocs.pm/elixir/Kernel.html#content</a>
+</p>
+
+<p>
+This will likely come in handy.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org256a65e">
+<h2 id="org256a65e">REPL work</h2>
+<div class="outline-text-2" id="text-org256a65e">
+</div></section>
+<section id="slide-orgc7be1d0">
+<h3 id="orgc7be1d0">Entering the repl</h3>
+<p>
+<code>iex</code> on the command line.
+</p>
+<pre  class="example">
+$ iex
+Erlang/OTP 19 [erts-8.3] [source] [64-bit] [smp:8:8]
+  [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)&gt;
+</pre>
+</section>
+<section id="slide-orge8ac597">
+<h3 id="orge8ac597">Data structures</h3>
+<ul>
+<li>numbers</li>
+<li>strings (interpolation)</li>
+<li>ranges</li>
+<li>maps</li>
+<li>lists</li>
+<li>atoms</li>
+<li>tuples</li>
+
+</ul>
+</section>
+<section id="slide-org170470f">
+<h3 id="org170470f">Console interface, gets and puts</h3>
+<ul>
+<li><code>IO.puts foo</code></li>
+<li><code>IO.inspect foo</code></li>
+<li><code>input = IO.gets("Your input ")</code></li>
+
+</ul>
+</section>
+<section id="slide-org2e4ce41">
+<h3 id="org2e4ce41">List comprehensions</h3>
+<p>
+The Enum module has most of the functions you care about:
+</p>
+<ul>
+<li><code>Enum.member?</code></li>
+<li><code>Enum.map</code></li>
+<li><code>Enum.flat_map</code></li>
+<li><code>Enum.reduce</code></li>
+
+</ul>
+</section>
+<section id="slide-orgb892184">
+<h3 id="orgb892184">Anonymous functions</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a0522d;">foo</span> = <span style="color: #a020f0;">fn</span>() -&gt; 5 <span style="color: #a020f0;">end</span>
+foo.()
+<span style="color: #a0522d;">sum</span> = <span style="color: #a020f0;">fn</span>(x, y) -&gt; x + y <span style="color: #a020f0;">end</span>
+sum.(2, 3)
+<span style="color: #a0522d;">sum</span> = &amp;(&amp;1 + &amp;2)
+sum.(2, 3)
+</pre>
+</div>
+</section>
+<section id="slide-orgc14467d">
+<h3 id="orgc14467d">Modules, aka namespaces</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">Foo</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #5d478b;">@static_number</span> 100
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgc99501d">
+<h3 id="orgc99501d">Named functions</h3>
+<p>
+Implicit return: last evaluated value is what is returned.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">Foo</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">double_numbers</span>(list) <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">Enum</span>.map(list, <span style="color: #a020f0;">fn</span>(x) -&gt; x * 2 <span style="color: #a020f0;">end</span>)
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bar</span> <span style="color: #a020f0;">do</span>
+    double_numbers([1,2,3])
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+
+<span style="color: #228b22;">Foo</span>.bar()
+</pre>
+</div>
+</section>
+<section id="slide-org492b538">
+<h3 id="org492b538">REPL / mapping Exercises</h3>
+<div class="outline-text-3" id="text-org492b538">
+</div></section>
+<section id="slide-orge265e00">
+<h4 id="orge265e00">Each</h4>
+<p>
+Take this data structure and create the following output:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a0522d;">beatles</span> = [<span style="color: #8b2252;">"john"</span>, <span style="color: #8b2252;">"paul"</span>, <span style="color: #8b2252;">"george"</span>, <span style="color: #8b2252;">"ringo"</span>, <span style="color: #8b2252;">"stu"</span>]
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">output:</span>
+<span style="color: #b22222;">#</span><span style="color: #b22222;">=&gt; 'john fondly remembers doing amphetamines in Hamburg'</span>
+<span style="color: #b22222;">#</span><span style="color: #b22222;">=&gt; 'paul fondly remembers doing amphetamines in Hamburg'</span>
+<span style="color: #b22222;">#</span><span style="color: #b22222;">=&gt; 'george fondly remembers doing amphetamines in Hamburg'</span>
+<span style="color: #b22222;">#</span><span style="color: #b22222;">=&gt; 'ringo fondly remembers doing amphetamines in Hamburg'</span>
+<span style="color: #b22222;">#</span><span style="color: #b22222;">=&gt; 'stu fondly remembers doing amphetamines in Hamburg'</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgb558325">
+<h4 id="orgb558325">Map</h4>
+<p>
+Take this data structure and create the following output:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a0522d;">beatles</span> = [<span style="color: #8b2252;">"john"</span>, <span style="color: #8b2252;">"paul"</span>, <span style="color: #8b2252;">"george"</span>, <span style="color: #8b2252;">"ringo"</span>, <span style="color: #8b2252;">"stu"</span>]
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">output:</span>
+<span style="color: #b22222;">#</span><span style="color: #b22222;">=&gt; ["John", "Paul", "George", "Ringo", "Stu"]</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgf544c42">
+<h4 id="orgf544c42">Squares and Hash</h4>
+<p>
+Write code that:
+</p>
+<ul>
+<li>Prompts the user for a minimum and maximum number.</li>
+<li>Generates a Hash that has key-value pairs, or entries, where.
+<ul>
+<li>Each key in a pair is a integer between the min and max entered.</li>
+<li>Each value in the pair is the square of key in that pair.</li>
+
+</ul></li>
+
+</ul>
+<p>
+(hint: use <code>Enum.reduce/3</code>)
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #b22222;"># </span><span style="color: #b22222;">with a min and max of 2 and 4, respectively,</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">the resulting hash would be:</span>
+<span style="color: #a0522d;">a</span> = %{2=&gt;4, 3=&gt;9, 4=&gt;16}
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org865657c">
+<h2 id="org865657c">SMALL BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgf48fa74">
+<h2 id="orgf48fa74">Recursion, pattern matching, guard clauses</h2>
+<div class="outline-text-2" id="text-orgf48fa74">
+</div></section>
+<section id="slide-org1d06d1f">
+<h3 id="org1d06d1f">Pattern matching / destructuring</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a0522d;">a</span> = 5
+5 = a
+^<span style="color: #a0522d;">a</span> = 6
+{<span style="color: #27408b;">:ok</span>, b} = {<span style="color: #27408b;">:ok</span>, 6}
+{<span style="color: #27408b;">:ok</span>, ^a} = {<span style="color: #27408b;">:ok</span>, 5}
+{<span style="color: #27408b;">:ok</span>, ^a} = {<span style="color: #27408b;">:ok</span>, 6}
+</pre>
+</div>
+</section>
+<section id="slide-org9566323">
+<h3 id="org9566323">Pattern matching in functions</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">Foo</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bar</span>(1) <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"hey hey"</span>
+  <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bar</span>(2) <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"yah yah"</span>
+  <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bar</span>(x) <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"default"</span>
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+<p>
+What happens if the last function is not defined?
+</p>
+</section>
+<section id="slide-org5c96708">
+<h3 id="org5c96708">Pattern matching, anonymous function</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a0522d;">function</span> = <span style="color: #a020f0;">fn</span>
+   1 -&gt; <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"That was a one"</span>
+   2 -&gt; <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"That was a two"</span>
+   <span style="color: #008b8b;">_</span> -&gt; <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"I don't care what that was."</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</section>
+<section id="slide-org2d81d8c">
+<h3 id="org2d81d8c">Recursion</h3>
+<p>
+Just pattern matching. Function definition order may matters (more specific ones go to the top).
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">Foo</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">recurse</span>([], acc) <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">IO</span>.puts acc
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">recurse</span>([head | tail], acc) <span style="color: #a020f0;">do</span>
+    recurse(tail, acc + head)
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">recurse</span>(list) <span style="color: #a020f0;">do</span>
+    recurse(list, 0)
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</section>
+<section id="slide-org6f8946a">
+<h3 id="org6f8946a">Guard clauses on functions</h3>
+<p>
+I refer to this page a <i>lot</i>.
+</p>
+
+<p>
+<a href="http://elixir-lang.org/getting-started/case-cond-and-if.html#expressions-in-guard-clauses">http://elixir-lang.org/getting-started/case-cond-and-if.html#expressions-in-guard-clauses</a>
+</p>
+<ul>
+<li><code>def(x) when x &gt; 5</code></li>
+<li><code>def(x) when x &lt; 0</code></li>
+<li><code>def(x)</code></li>
+
+</ul>
+</section>
+<section id="slide-orgf0b87a3">
+<h3 id="orgf0b87a3">Fibonacci</h3>
+<p>
+Write recursive code that computes a Fibonacci number, e.g. <code>Fibonacci.call(15)</code>.
+The Fibonacci series is defined as:
+</p>
+
+<ul>
+<li>n(x) where x &lt; 1 = undefined</li>
+<li>n(1) = 1</li>
+<li>n(2) = 1</li>
+<li>n(x) = n(x-1) + n(x+2)</li>
+
+</ul>
+</section>
+<section id="slide-org8507660">
+<h3 id="org8507660">Fizzbuzz exercise</h3>
+<p>
+Write a program that prints the numbers from 1 to 100.
+</p>
+
+<p>
+For multiples of three print "Fizz" instead of the number and for multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org18a41e2">
+<h2 id="org18a41e2">SMALL BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-org2e1c560">
+<h2 id="org2e1c560">Combining functions</h2>
+<div class="outline-text-2" id="text-org2e1c560">
+</div></section>
+<section id="slide-org9fa4041">
+<h3 id="org9fa4041">Pipelining</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir">(1..100)
+|&gt; <span style="color: #228b22;">Enum</span>.filter(<span style="color: #a020f0;">fn</span>(x) -&gt; rem(x, 2) == 0 <span style="color: #a020f0;">end</span>) <span style="color: #b22222;"># </span><span style="color: #b22222;">Modulo operator!</span>
+|&gt; <span style="color: #228b22;">Enum</span>.map(<span style="color: #a020f0;">fn</span>(x) -&gt; x * 2 <span style="color: #a020f0;">end</span>)
+</pre>
+</div>
+</section>
+<section id="slide-orge50e8ac">
+<h3 id="orge50e8ac">Pipeline exercises</h3>
+<p>
+Write a pipeline that:
+</p>
+<ul>
+<li>removes odd numbers from a list</li>
+<li>squares the remaining numbers</li>
+<li>divides them by two</li>
+<li>removes the even numbers.</li>
+
+</ul>
+
+<p>
+Note that <code>5/2</code> may yield a floating-point number so you might want to use <code>div(5, 2)</code> instead.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org88e7fe0">
+<h2 id="org88e7fe0">Guess the number</h2>
+<p>
+Write a module that lets you play a game of guessing a number. To let the computer choose a random number, use something like <code>Enum.random(1..10)</code>.
+You might want to use the pipelines to transform the user's input into an integer.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgd50f3ee">
+<h2 id="orgd50f3ee">LONG BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-org1b53247">
+<h2 id="org1b53247">Rock, paper, scissors</h2>
+<div class="outline-text-2" id="text-org1b53247">
+</div></section>
+<section id="slide-orgd460e44">
+<h3 id="orgd460e44">Basic game</h3>
+<p>
+Write a module that lets you determine the winner of a two-player game of rock, paper, scissors. The inputs could be <code>:rock</code>, <code>:paper</code>, <code>:scissors</code>. The outputs could be <code>:player1</code>, <code>:player2</code>, <code>:draw</code>.
+</p>
+
+<p>
+Remember that:
+</p>
+<ul>
+<li>rock beats scissors</li>
+<li>scissors beats paper</li>
+<li>paper beats rock</li>
+
+</ul>
+</section>
+<section id="slide-org05255ea">
+<h3 id="org05255ea">Rock, paper, scissors, lizard, spock</h3>
+<p>
+Copy the previous code over to a new file and tweak the rules so that:
+</p>
+<ul>
+<li>Spock smashes scissors and vaporizes rock; he is poisoned by lizard and disproven by paper.</li>
+<li>Lizard poisons Spock and eats paper; it is crushed by rock and decapitated by scissors.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgb2c23b2">
+<h2 id="orgb2c23b2">SMALL BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-org5568a83">
+<h2 id="org5568a83">Processes!</h2>
+<p>
+Now things get exciting.
+</p>
+</section>
+<section id="slide-org2b6051b">
+<h3 id="org2b6051b">What is <code>self()</code> anyway?</h3>
+<p>
+In Elixir, <code>self()</code> refers to THE CURRENT PROCESS.
+</p>
+</section>
+<section id="slide-org81ea0b2">
+<h3 id="org81ea0b2">Two simple tools</h3>
+<ul>
+<li><code>send</code></li>
+<li><code>receive</code></li>
+
+</ul>
+</section>
+<section id="slide-orgfbf55d1">
+<h3 id="orgfbf55d1">Message order</h3>
+<p>
+Messages are fundamentally FIFO, <b>HOWEVER</b>!
+</p>
+
+<p>
+THE FIRST MESSAGE TO MATCH A PATTERN WILL BE THE FIRST TO GO.
+</p>
+</section>
+<section id="slide-org8712e8e">
+<h3 id="org8712e8e">Example</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir">iex(12)&gt; <span style="color: #a020f0;">send</span> self(), <span style="color: #27408b;">:hello</span>
+<span style="color: #27408b;">:hello</span>
+iex(13)&gt; <span style="color: #a020f0;">receive</span> <span style="color: #a020f0;">do</span> <span style="color: #27408b;">:hello</span> -&gt; <span style="color: #27408b;">:world</span> <span style="color: #a020f0;">end</span>
+<span style="color: #27408b;">:world</span>
+</pre>
+</div>
+</section>
+<section id="slide-org493c01c">
+<h3 id="org493c01c">We can send any message to any process.</h3>
+<p>
+How to keep track of the sender? How about send the sender's pid?
+<a href="https://hexdocs.pm/elixir/Kernel.html#spawn/1">https://hexdocs.pm/elixir/Kernel.html#spawn/1</a>
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir">iex(8)&gt; <span style="color: #a0522d;">pid_of_repl</span> = self()
+<span style="color: #b22222;">#</span><span style="color: #b22222;">PID&lt;0.80.0&gt;</span>
+iex(9)&gt; <span style="color: #a0522d;">velociraptors</span> = <span style="color: #a020f0;">fn</span> -&gt;
+...(9)&gt;   <span style="color: #a020f0;">send</span>(pid_of_repl, {self(), <span style="color: #8b2252;">"Velociraptors!"</span>})
+...(9)&gt; <span style="color: #a020f0;">end</span>
+<span style="color: #b22222;">#</span><span style="color: #b22222;">Function&lt;20.118419387/0 in :erl_eval.expr/5&gt;</span>
+iex(10)&gt; <span style="color: #a0522d;">child_pid</span> = spawn(velociraptors)
+<span style="color: #b22222;">#</span><span style="color: #b22222;">PID&lt;0.98.0&gt;</span>
+iex(11)&gt; <span style="color: #a020f0;">receive</span> <span style="color: #a020f0;">do</span>
+...(11)&gt;   {^child_pid, message} -&gt; <span style="color: #228b22;">IO</span>.puts message
+...(11)&gt; <span style="color: #a020f0;">end</span>
+<span style="color: #228b22;">Velociraptors!</span>
+<span style="color: #27408b;">:ok</span>
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgdfc96dc">
+<h2 id="orgdfc96dc">Exercise: distributed map</h2>
+<p>
+How would you build code that does distributed mapping?
+</p>
+</section>
+<section id="slide-org4ae6d7c">
+<h3 id="org4ae6d7c">From "Programming Elixir"</h3>
+<p>
+Courtesy of Dave Thomas - excerpt from Programming Elixir, used with permission.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">Parallel</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">pmap</span>(collection, fun) <span style="color: #a020f0;">do</span>
+    <span style="color: #a0522d;">me</span> = self()
+    collection
+    |&gt; <span style="color: #228b22;">Enum</span>.map(<span style="color: #a020f0;">fn</span> (elem) -&gt;
+         spawn <span style="color: #a020f0;">fn</span> -&gt; <span style="color: #a020f0;">send</span>(me, { self(), fun.(elem) }) <span style="color: #a020f0;">end</span>
+       <span style="color: #a020f0;">end</span>)
+    |&gt; <span style="color: #228b22;">Enum</span>.map(<span style="color: #a020f0;">fn</span> (pid) -&gt;
+         <span style="color: #a020f0;">receive</span> <span style="color: #a020f0;">do</span> { ^pid, result } -&gt; result <span style="color: #a020f0;">end</span>
+       <span style="color: #a020f0;">end</span>)
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org714b967">
+<h2 id="org714b967">SMALL BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-org55bf2de">
+<h2 id="org55bf2de">GenServers</h2>
+<div class="outline-text-2" id="text-org55bf2de">
+</div></section>
+<section id="slide-orga19eb78">
+<h3 id="orga19eb78">Cast and Call</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">MyServer</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">use</span> <span style="color: #228b22;">GenServer</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">handle_cast</span>({<span style="color: #27408b;">:ping</span>, x}, state) <span style="color: #a020f0;">do</span>
+    <span style="color: #27408b;">:timer</span>.sleep 2000
+    <span style="color: #228b22;">IO</span>.inspect x
+    {<span style="color: #27408b;">:noreply</span>, state}
+  <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">handle_call</span>({<span style="color: #27408b;">:ping</span>, x}, <span style="color: #b22222;">_from</span>, state) <span style="color: #a020f0;">do</span>
+    <span style="color: #27408b;">:timer</span>.sleep 2000
+    <span style="color: #228b22;">IO</span>.inspect x
+    {<span style="color: #27408b;">:reply</span>, <span style="color: #27408b;">:hello_world</span>, state}
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">nil means store nil as state</span>
+{<span style="color: #27408b;">:ok</span>, pid} = <span style="color: #228b22;">GenServer</span>.start_link(<span style="color: #228b22;">MyServer</span>, <span style="color: #27408b;">nil</span>)
+<span style="color: #228b22;">GenServer</span>.cast(pid, {<span style="color: #27408b;">:ping</span>, <span style="color: #8b2252;">"hello, world"</span>})
+<span style="color: #228b22;">GenServer</span>.call(pid, {<span style="color: #27408b;">:ping</span>, <span style="color: #8b2252;">"hello, world"</span>})
+</pre>
+</div>
+
+</section>
+<section id="slide-org94c3bcd">
+<h3 id="org94c3bcd">State</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">MyServer</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">use</span> <span style="color: #228b22;">GenServer</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">handle_call</span>({<span style="color: #27408b;">:add_name</span>, name}, <span style="color: #b22222;">_from</span>, state) <span style="color: #a020f0;">do</span>
+    {<span style="color: #27408b;">:reply</span>, <span style="color: #27408b;">:ok</span>, [name | state]}
+  <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">handle_call</span>(<span style="color: #27408b;">:greetings</span>, <span style="color: #b22222;">_from</span>, state) <span style="color: #a020f0;">do</span>
+    <span style="color: #a0522d;">greetings</span> = <span style="color: #228b22;">Enum</span>.map(state, <span style="color: #a020f0;">fn</span>(x) -&gt; <span style="color: #8b2252;">"Hello, </span><span style="color: #a0522d;">#{x}</span><span style="color: #8b2252;">!"</span> <span style="color: #a020f0;">end</span>)
+    {<span style="color: #27408b;">:reply</span>, {<span style="color: #27408b;">:ok</span>, greetings}, state}
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">store [] as initial state</span>
+{<span style="color: #27408b;">:ok</span>, pid} = <span style="color: #228b22;">GenServer</span>.start_link(<span style="color: #228b22;">MyServer</span>, [])
+<span style="color: #27408b;">:ok</span> = <span style="color: #228b22;">GenServer</span>.call(pid, {<span style="color: #27408b;">:add_name</span>, <span style="color: #8b2252;">"Kathew"</span>})
+<span style="color: #27408b;">:ok</span> = <span style="color: #228b22;">GenServer</span>.call(pid, {<span style="color: #27408b;">:add_name</span>, <span style="color: #8b2252;">"Lichard"</span>})
+{<span style="color: #27408b;">:ok</span>, greetings} = <span style="color: #228b22;">GenServer</span>.call(pid, <span style="color: #27408b;">:greetings</span>)
+</pre>
+</div>
+</section>
+<section id="slide-org8686296">
+<h3 id="org8686296">Relevant documentation</h3>
+<p>
+<a href="https://hexdocs.pm/elixir/GenServer.html#c:handle_call/3">https://hexdocs.pm/elixir/GenServer.html#c:handle_call/3</a>
+</p>
+
+<p>
+<a href="https://hexdocs.pm/elixir/GenServer.html#c:handle_cast/2">https://hexdocs.pm/elixir/GenServer.html#c:handle_cast/2</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org30d72ed">
+<h2 id="org30d72ed">OPTIONAL SMALL BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-org978cf00">
+<h2 id="org978cf00">GenServers part 2</h2>
+</section>
+</section>
+<section>
+<section id="slide-org79f5c69">
+<h2 id="org79f5c69">Rock-paper-scissors ... As a Service</h2>
+<p>
+Create a GenServer that lets you play RPS and keeps track of the number of wins for each player as well as a percentage of time each player chose.
+</p>
+
+<p>
+Send a message to get a string version of the stats back.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgb68e9f9">
+<h2 id="orgb68e9f9">Rock Paper Scissors, many processes</h2>
+<p>
+Make it possible to change between rulesets, and preserve stats for each rulesets while the game is running (don't worry about storing anything).
+</p>
+
+<p>
+Thoughts:
+</p>
+<ul>
+<li>Maybe each ruleset/stats is a separate process and you can store the pid as part of the state of the game process?</li>
+<li>Maybe you store all the pids in the game state and you send a message to switch to another ruleset?</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgabab568">
+<h2 id="orgabab568">SMALL BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgb5779ff">
+<h2 id="orgb5779ff">RPS, many processes, part 2</h2>
+</section>
+</section>
+<section>
+<section id="slide-org3147b30">
+<h2 id="org3147b30">LONG BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgd58431d">
+<h2 id="orgd58431d">Supervisors &amp; Applications</h2>
+<div class="outline-text-2" id="text-orgd58431d">
+</div></section>
+<section id="slide-org505fc7d">
+<h3 id="org505fc7d">A supervisor is a process guardian</h3>
+<p>
+Gets notified and acts appropriately if a supervised process goes down.
+</p>
+</section>
+<section id="slide-org06188f3">
+<h3 id="org06188f3">Won't show supervisors outside an application for simplicity</h3>
+<ul>
+<li>Supervisors manage processes</li>
+<li>Supervising processes in REPL is useless for our purposes.</li>
+
+</ul>
+</section>
+<section id="slide-orgd6edaea">
+<h3 id="orgd6edaea">An application is a reusable unit of code</h3>
+<p>
+Think "microservice" if you have to.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgd549c62">
+<h2 id="orgd549c62">Creating a project</h2>
+<p>
+<code>mix new foo --sup</code>
+</p>
+</section>
+<section id="slide-org08bb6ef">
+<h3 id="org08bb6ef">App not always a process tree</h3>
+<p>
+In this case, for didactic purposes
+</p>
+</section>
+<section id="slide-orge1fd0e7">
+<h3 id="orge1fd0e7">directory tree</h3>
+<blockquote nil>
+<p>
+foo
+</p>
+
+<p>
+├── config
+</p>
+
+<p>
+│   └── config.exs
+</p>
+
+<p>
+├── lib
+</p>
+
+<p>
+│   ├── foo
+</p>
+
+<p>
+│   │   └── application.ex
+</p>
+
+<p>
+│   └── foo.ex
+</p>
+
+<p>
+├── mix.exs
+</p>
+
+<p>
+├── README.md
+</p>
+
+<p>
+└── test
+</p>
+
+<p>
+├── foo_test.exs
+</p>
+
+<p>
+└── test_helper.exs
+</p>
+</blockquote>
+</section>
+<section id="slide-org8df6423">
+<h3 id="org8df6423">What to supervise?</h3>
+<p>
+In general, things that you want to have come back up if they crash.
+</p>
+</section>
+<section id="slide-org6c8c964">
+<h3 id="org6c8c964">application.ex</h3>
+<p>
+Shows that the Application is also behaving as a Supervisor
+</p>
+</section>
+<section id="slide-org430394d">
+<h3 id="org430394d">Important code</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">start</span>(<span style="color: #b22222;">_type</span>, <span style="color: #b22222;">_args</span>) <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">import</span> <span style="color: #228b22;">Supervisor.Spec</span>, <span style="color: #27408b;">warn:</span> <span style="color: #27408b;">false</span>
+  <span style="color: #a0522d;">children</span> = [
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">Foo.Worker is a made-up module name</span>
+    worker(<span style="color: #228b22;">Foo.Worker</span>, [arg1, arg2, arg3], <span style="color: #27408b;">restart:</span> <span style="color: #27408b;">:permanent</span>),
+  ]
+  <span style="color: #a0522d;">opts</span> = [<span style="color: #27408b;">strategy:</span> <span style="color: #27408b;">:one_for_one</span>, <span style="color: #27408b;">name:</span> <span style="color: #228b22;">Foo.Supervisor</span>]
+  <span style="color: #228b22;">Supervisor</span>.start_link(children, opts)
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</section>
+<section id="slide-org9ba9b97">
+<h3 id="org9ba9b97">Connecting the dots</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">Foo.Worker</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">use</span> <span style="color: #228b22;">GenServer</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">start_link</span>(args) <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">GenServer</span>.start_link(<span style="color: #228b22;">Foo.Worker</span>, args, <span style="color: #27408b;">name:</span> <span style="color: #228b22;">Foo.Worker</span>)
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+
+iex(14)&gt; <span style="color: #228b22;">Foo.Worker</span>.start_link(<span style="color: #27408b;">nil</span>)
+{<span style="color: #27408b;">:ok</span>, <span style="color: #b22222;">#</span><span style="color: #b22222;">PID&lt;0.114.0&gt;}</span>
+iex(15)&gt; <span style="color: #228b22;">GenServer</span>.whereis(<span style="color: #228b22;">Foo.Worker</span>)
+<span style="color: #b22222;">#</span><span style="color: #b22222;">PID&lt;0.114.0&gt;</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgca696ab">
+<h3 id="orgca696ab">Exercise</h3>
+<p>
+Put the RPS game in a project with a supervision tree (<code>--sup</code>). You can test it with <code>iex -S mix</code> to start a REPL with the project. Try to make it crash. See if you get error messages.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgca33433">
+<h2 id="orgca33433">SMALL BREAK</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgad7b210">
+<h2 id="orgad7b210">Deploying</h2>
+<p>
+<a href="https://hexdocs.pm/distillery/walkthrough.html#content">https://hexdocs.pm/distillery/walkthrough.html#content</a>
+</p>
+</section>
+<section id="slide-orgc453b21">
+<h3 id="orgc453b21">Add distillery to RPS project</h3>
+<p>
+In mix.exs file, replace the <code>deps</code> function with
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defp</span> <span style="color: #0000ff;">deps</span> <span style="color: #a020f0;">do</span>
+  [{<span style="color: #27408b;">:distillery</span>, <span style="color: #8b2252;">"~&gt; 1.0"</span>}]
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+<p>
+then run <code>mix deps.get &amp;&amp; mix release.init</code>
+</p>
+</section>
+<section id="slide-org19cbd50">
+<h3 id="org19cbd50">Build the release</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"><span style="color: #a0522d;">MIX_ENV</span>=prod mix release --env=prod
+</pre>
+</div>
+<p>
+Now you have a tarball:
+</p>
+
+<p>
+_build/prod/rel/project_name/releases/0.1.0/project_name.tar.gz
+</p>
+
+</section>
+<section id="slide-org8c3669d">
+<h3 id="org8c3669d">Place that tarball somewhere and untar</h3>
+<p>
+Ye olde
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-bash">tar xzf project_name.tar.gz -C /deploy/path
+</pre>
+</div>
+</section>
+<section id="slide-orga5ae683">
+<h3 id="orga5ae683">Start the app</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash">/deploy/path/bin/project_name start
+</pre>
+</div>
+</section>
+<section id="slide-org28d7344">
+<h3 id="org28d7344">Connect to it</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash">/deploy/path/bin/project_name remote_console
+</pre>
+</div>
+</section>
+<section id="slide-orga472731">
+<h3 id="orga472731">Build upgrade, part 1</h3>
+<ol>
+<li>Open a new terminal</li>
+<li>change version number in mix.exs</li>
+<li>MIX_ENV=prod mix release --upgrade --env=prod</li>
+<li>File will be at:</li>
+
+</ol>
+
+<p>
+_build/prod/rel/project_name/releases/
+new_version_number/project_name.tar.gz
+</p>
+</section>
+<section id="slide-org7cd96cc">
+<h3 id="org7cd96cc">Build upgrade, part 2</h3>
+<ol>
+<li>Create directory /path/releases/new_version_number</li>
+<li>Put the new tarball in there</li>
+<li>/path/bin/project_name upgrade new_version_number</li>
+<li>Champagne!</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-org812a9aa">
+<h2 id="org812a9aa">Parting thoughts</h2>
+<p>
+Good time for questions!
+If you don't have questions, check out this blog entry: distributed game of life, because why not?
+<a href="http://beyondscheme.com/2016/distributed-game-of-life-in-elixir">http://beyondscheme.com/2016/distributed-game-of-life-in-elixir</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org40db2eb">
+<h2 id="org40db2eb">Bonus material</h2>
+</section>
+</section>
+<section>
+<section id="slide-orga476922">
+<h2 id="orga476922">Railway programming</h2>
+<p>
+This is how you would implement railway programming.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">with</span> {<span style="color: #27408b;">:ok</span>, new_deck1, hand1} &lt;- <span style="color: #228b22;">Deck</span>.deal(original_deck, 5),
+     {<span style="color: #27408b;">:ok</span>, new_deck2, hand2} &lt;- <span style="color: #228b22;">Deck</span>.deal(new_deck1, 5),
+     {<span style="color: #27408b;">:ok</span>, hand1_rank} &lt;- <span style="color: #228b22;">Poker</span>.rank(hand1),
+     {<span style="color: #27408b;">:ok</span>, hand2_rank} &lt;- <span style="color: #228b22;">Poker</span>.rank(hand2) <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">if</span> hand1_rank &gt; hand2_rank <span style="color: #a020f0;">do</span>
+    {<span style="color: #27408b;">:ok</span>, <span style="color: #27408b;">:player_1_wins</span>}
+  <span style="color: #a020f0;">else</span>
+    {<span style="color: #27408b;">:ok</span>, <span style="color: #27408b;">:player_2_wins</span>}
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">else</span>
+  {<span style="color: #27408b;">:error</span>, <span style="color: #27408b;">:not_enough_cards_in_deck</span>} -&gt; {<span style="color: #27408b;">:error</span>, <span style="color: #27408b;">:not_enough_cards</span>, original_deck}&#57344;&#57345;
+  {<span style="color: #27408b;">:error</span>, <span style="color: #008b8b;">_</span>} -&gt; {<span style="color: #27408b;">:error</span>, <span style="color: #27408b;">:could_not_compare_hands</span>, original_deck}
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgadcaaac">
+<h2 id="orgadcaaac">anonymous recursion</h2>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a0522d;">factorial</span> = <span style="color: #a020f0;">fn</span>
+  (0,<span style="color: #008b8b;">_</span>) -&gt; 1
+  (1,<span style="color: #008b8b;">_</span>) -&gt; 1
+  (n, fun) -&gt; n * fun.(n - 1, fun)
+<span style="color: #a020f0;">end</span>
+factorial.(6, factorial) <span style="color: #b22222;"># </span><span style="color: #b22222;">720</span>
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org545019e">
+<h2 id="org545019e">Code samples</h2>
+<div class="outline-text-2" id="text-org545019e">
+</div></section>
+<section id="slide-org8f33102">
+<h3 id="org8f33102">Map of squares</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">SquaresMap</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">generate</span> <span style="color: #a020f0;">do</span>
+    <span style="color: #a0522d;">min</span> = <span style="color: #228b22;">String</span>.to_integer <span style="color: #228b22;">String</span>.trim(<span style="color: #228b22;">IO</span>.gets(<span style="color: #8b2252;">"Minimum: "</span>))
+    <span style="color: #a0522d;">max</span> = <span style="color: #228b22;">String</span>.to_integer <span style="color: #228b22;">String</span>.trim(<span style="color: #228b22;">IO</span>.gets(<span style="color: #8b2252;">"Maximum: "</span>))
+    generate_hash(min, max)
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">generate_hash</span>(min, max) <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">Enum</span>.reduce(
+      min..max,
+      %{},
+      <span style="color: #a020f0;">fn</span>(x, acc) -&gt; <span style="color: #228b22;">Map</span>.put(acc, x, x * x) <span style="color: #a020f0;">end</span>
+    )
+  <span style="color: #a020f0;">end</span>
+
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</section>
+<section id="slide-orge0320b4">
+<h3 id="orge0320b4">Fizzbuzz</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">FizzBuzz</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">call</span> <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">Enum</span>.each(1..100, <span style="color: #a020f0;">fn</span>
+      x <span style="color: #a020f0;">when</span> rem(x, 3) == 0 <span style="color: #a020f0;">and</span> rem(x, 5) == 0 -&gt; <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"FizzBuzz"</span>
+      x <span style="color: #a020f0;">when</span> rem(x, 3) == 0 -&gt; <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"Fizz"</span>
+      x <span style="color: #a020f0;">when</span> rem(x, 5) == 0 -&gt; <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"Buzz"</span>
+      x -&gt; <span style="color: #228b22;">IO</span>.puts x
+    <span style="color: #a020f0;">end</span>
+    )
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</section>
+<section id="slide-org9b76fcc">
+<h3 id="org9b76fcc">Guess the number</h3>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #a020f0;">defmodule</span> <span style="color: #228b22;">Guess</span> <span style="color: #a020f0;">do</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">start</span> <span style="color: #a020f0;">do</span>
+    <span style="color: #a0522d;">number</span> = <span style="color: #228b22;">Enum</span>.random(1..10)
+    loop_guessing(number)
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">loop_guessing</span>(number) <span style="color: #a020f0;">do</span>
+    <span style="color: #a0522d;">guess</span> =
+      <span style="color: #228b22;">IO</span>.gets(<span style="color: #8b2252;">"Your guess: "</span>)
+      |&gt; <span style="color: #228b22;">String</span>.trim
+      |&gt; <span style="color: #228b22;">String</span>.to_integer
+    evaluate_guess(guess, number)
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">evaluate_guess</span>(guess, number) <span style="color: #a020f0;">when</span> guess &lt; number <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"You guessed too low!"</span>
+    loop_guessing(number)
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">evaluate_guess</span>(guess, number) <span style="color: #a020f0;">when</span> guess &gt; number <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"You guessed too high!"</span>
+    loop_guessing(number)
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">evaluate_guess</span>(guess, number) <span style="color: #a020f0;">when</span> guess == number <span style="color: #a020f0;">do</span>
+    <span style="color: #228b22;">IO</span>.puts <span style="color: #8b2252;">"You guessed right!"</span>
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///Users/aldric/src/vendor/reveal.js-3.5.0/lib/js/head.min.js"></script>
+<script src="file:///Users/aldric/src/vendor/reveal.js-3.5.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: false,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///Users/aldric/src/vendor/reveal.js-3.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:///Users/aldric/src/vendor/reveal.js-3.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///Users/aldric/src/vendor/reveal.js-3.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///Users/aldric/src/vendor/reveal.js-3.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:///Users/aldric/src/vendor/reveal.js-3.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
