@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery.emoji.js"></script>
+    <title>Guide: Chris Allen</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p>
+          <span class="badge open">open</span>
+          <span class="url">lambdaconf/winter-retreat-2017#8</span>
+        </p>
+        <h1>Guide: Chris Allen</h1>
+      </header>
+      <div class="comments">
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/bitemyapp">bitemyapp</a>
+            <time>9/1/2016</time>
+          </div>
+          <div class="body">
+            <p>I&#39;m Chris Allen, an author of Haskell Programming from First Principles, commonly known as the <a href="http://haskellbook.com">haskell book</a>. I&#39;m an uneducated working programmer that got tired of unnecessary trade-offs between types and expressiveness.</p>
+<p>I originally started teaching so that I could spin up coworkers on Haskell, but found teaching itself to be more energizing than writing code.</p>
+<p>Past topics I&#39;ve covered in some way include:</p>
+<ul>
+<li><a href="http://haskellbook.com">lambda calculus, expressions, types, polymorphism, typeclasses, higher kinded types, functor/applicative/monad, foldable/traversable, reader, state, monad transformers, benchmarking and profiling, laziness, IO, and more</a></li>
+<li><a href="https://www.youtube.com/watch?v=uYXX1t3GrsE">Yesod and Persistent in practice</a> (I use these at work)</li>
+<li>Rank N Types (I gave a talk on this at LC 16 and really enjoyed it)</li>
+<li><a href="https://github.com/bitemyapp/buttress/blob/master/src/Buttress/Time.hs">Instance-local functional dependencies</a></li>
+<li>Practical applications of type families in Haskell (mono-traversable, Persistent, and stripe-haskell come to mind)</li>
+</ul>
+<p>Topics I don&#39;t have much practice teaching with but would be happy to explore with someone include:</p>
+<ul>
+<li>Servant</li>
+<li>GHCJS (e.g. <a href="https://github.com/bitemyapp/ghcjs-starter-project">https://github.com/bitemyapp/ghcjs-starter-project</a> )</li>
+<li>Parsing/tagging parts of speech (Such as with <a href="https://www.stackage.org/package/chatter">Chatter</a>)</li>
+</ul>
+<p>I am excited to be a guide at the LambdaConf Winter Retreat! I&#39;m not stuck on anything in this list, so if you have requests, please tell me as soon as possible!</p>
+<p>Edit:</p>
+<h3 id="final-talk-description">Final talk description</h3>
+<p>Hello everyone! I&#39;m known primarily for the book <a href="http://haskellbook.com">Haskell Programming from First Principles</a> and for some free Haskell tutorials and guides. The material of my presentation at the winter retreat will be based on my upcoming book named <a href="http://lorepub.com/product/cookbook">Haskell Almanac</a>. The content will be focused on intermediate topics which are commonly needed in industry software projects. Think &quot;web applications&quot;, except I may not devote much actual time to a web framework, but rather, the peripheral dependencies of a Haskell web application.</p>
+<p>It is safe to assume that you should have the basics of Haskell down to get the full value of this lesson! The first 2/3s or 3/4s of the <a href="http://haskellbook.com">Haskell Book</a> is a good baseline for what you should know. Remember that merely reading the material isn&#39;t sufficient, you will need to have done the exercises. If you&#39;re already using Haskell productively and can sling things like monad transformers without too much comfort, you probably do not need the book although some advanced readers have enjoyed the insights it offers.</p>
+
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/bitemyapp">
+              bitemyapp
+            </a>
+            <time>9/6/2016</time>
+          </div>
+          <div class="body"><p>Requests so far have been:</p>
+<ul>
+<li>Web apps</li>
+<li>streaming libraries (machines, conduit, pipes)</li>
+<li>event sourcing</li>
+<li><code>Data.ByteString.Lazy</code> and <code>Builder</code></li>
+<li><code>monad-control</code></li>
+</ul>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/mudphone">
+              mudphone
+            </a>
+            <time>9/7/2016</time>
+          </div>
+          <div class="body"><p>I&#39;d also be interested in learning about building web apps. Doing so with Yesod and Persistent, or GHCJS sounds fun!</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/rabbitonweb">
+              rabbitonweb
+            </a>
+            <time>9/7/2016</time>
+          </div>
+          <div class="body"><p>Yeah, Chris :) !! For me you can talk about anything, I&#39;m all ears :)</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/haroldcarr">
+              haroldcarr
+            </a>
+            <time>9/7/2016</time>
+          </div>
+          <div class="body"><p>Interested in (in listed order):</p>
+<ul>
+<li>Practical applications of type families in Haskell</li>
+<li>Rank N Types</li>
+<li>Instance-local functional dependencies</li>
+</ul>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/jdegoes">
+              jdegoes
+            </a>
+            <time>9/8/2016</time>
+          </div>
+          <div class="body"><p>My vote: Workshop on using both type families and functional dependencies, and showing how different scenarios benefit from either.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>9/16/2016</time>
+          </div>
+          <div class="body"><p>+1 to @jdegoes 
+I would love hearing about the interplay of type classes, open and closed type and data families, associated types, functional dependencies and injectivity annotations. They all look similar, but each of them is tricky in its own way.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/rezalesmana">
+              rezalesmana
+            </a>
+            <time>10/17/2016</time>
+          </div>
+          <div class="body"><p>web apps with event sourcing would be great</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/purefunctions">
+              purefunctions
+            </a>
+            <time>10/25/2016</time>
+          </div>
+          <div class="body"><p>GHCjs, and functional front-end in general</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/ErrorNullPointer">
+              ErrorNullPointer
+            </a>
+            <time>11/3/2016</time>
+          </div>
+          <div class="body"><p>+1 to @haroldcarr </p>
+<p>I second his vote.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/LambdaMathematician">
+              LambdaMathematician
+            </a>
+            <time>11/3/2016</time>
+          </div>
+          <div class="body"><p>+1 to lambda calculus, expressions, types, polymorphism, typeclasses, higher kinded types, functor/applicative/monad, foldable/traversable, reader, state, monad transformers, benchmarking and profiling, laziness, IO, and more</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/bitemyapp">
+              bitemyapp
+            </a>
+            <time>11/3/2016</time>
+          </div>
+          <div class="body"><p>For anyone wanting rank n types: <a href="https://www.youtube.com/watch?v=k0cZe0LVFI4">https://www.youtube.com/watch?v=k0cZe0LVFI4</a></p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/purefunctions">
+              purefunctions
+            </a>
+            <time>11/4/2016</time>
+          </div>
+          <div class="body"><p>@bitemyapp Do you have the slides/code from the talk above? The screen isn&#39;t that observable in the video</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/bitemyapp">
+              bitemyapp
+            </a>
+            <time>11/4/2016</time>
+          </div>
+          <div class="body"><p>@emptyslot </p>
+<p><a href="https://github.com/bitemyapp/presentations/blob/master/rank_n_types_talk/rankn.pdf">https://github.com/bitemyapp/presentations/blob/master/rank_n_types_talk/rankn.pdf</a></p>
+<p><a href="https://github.com/bitemyapp/presentations/blob/master/rank_n_types_talk/tuple.hs">https://github.com/bitemyapp/presentations/blob/master/rank_n_types_talk/tuple.hs</a></p>
+<p><a href="https://github.com/bitemyapp/presentations/blob/master/rank_n_types_talk/ranks.hs">https://github.com/bitemyapp/presentations/blob/master/rank_n_types_talk/ranks.hs</a></p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/gilligan">
+              gilligan
+            </a>
+            <time>11/8/2016</time>
+          </div>
+          <div class="body"><blockquote>
+<p>Servant</p>
+</blockquote>
+<p>Personally I would be very interested in developing some small servant project. I would possibly consider the fact that you don&#39;t know Servant that well as a bonus because that way I could see how you explore new Haskell libraries/frameworks.</p>
+<p>So developing a small servant app ideally with some tiny frontend part would be great for me. Maybe not thrilling as some of the fancy topics mentioned here but anyway.. ;)</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/alexi21">
+              alexi21
+            </a>
+            <time>12/4/2016</time>
+          </div>
+          <div class="body"><p>My work is all web applications so anything relating to that would be great.</p>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.comment').each(function(i, d){
+          $(d).emoji()
+        })
+      })
+    </script>
+
+  </body>
+</html>

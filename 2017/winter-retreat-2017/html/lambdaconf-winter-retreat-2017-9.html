@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery.emoji.js"></script>
+    <title>Guide: TJ Usiyan</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p>
+          <span class="badge open">open</span>
+          <span class="url">lambdaconf/winter-retreat-2017#9</span>
+        </p>
+        <h1>Guide: TJ Usiyan</h1>
+      </header>
+      <div class="comments">
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/griotspeak">griotspeak</a>
+            <time>9/27/2016</time>
+          </div>
+          <div class="body">
+            <p>I&#39;m TJ Usiyan, iOS instructor at The Iron Yard and frequent speaker on the topics of Swift, iOS, functional programming, math, music, and how all or some of those things can be juxtaposed into something delightful. I have a liberal arts background and have an unconventional CS background.</p>
+<p>I have been teaching one thing (music,  math) or another (programming), for over ten years. </p>
+<p>Past topics I&#39;ve covered in some way include (mostly in Swift):</p>
+<p>Parser Combinators, Types and API design, DSLs, Generics, Protocols, Monads, Language, Symbolic Music Representation: Notation &amp; Theory, Symbolic Calculus, Functional Reactive Programming, Polymorphic Temporal Media, Operator overloading, , Translating Haskell through meditation.</p>
+<p>I would love to talk more about any of these topics but exploring new DSLs, Sane and sanitary Operator Overloading, Polyphonic temporal media, Generics, or protocols would be especially wonderful, I think. </p>
+<p> I&#39;m excited to be a guide and hope we can craft beautiful language together this winter. None of this is set in stone. I invite suggestions and requests! Vote using thumbs up and thumbs down emojis and we&#39;ll figure this all out together!</p>
+<h2 id="functional-programming-and-polymorphism-basics-in-swift">Functional Programming and Polymorphism basics in Swift</h2>
+<p>Swift allows us to apply many techniques from functional programming but, at the end of the day, Swift is not meant to be a functional programming language. This point can make it tricky to learn and apply functional programming principles using the language. One approach is to eschew FP concepts altogether when using Swift. It doesn’t take much time to realize that this is not the correct approach. Use of closures as first class types, <code>map</code> and <code>filter</code>are all completely at home in Swift. Clearly, there are some concepts which work well in Swift. </p>
+<p>In this session, we’ll introduce fundamental functional programming concepts using swift, explain and explore the ways in which Swift is not meant to adhere to these, and try to define some basic guidelines for successfully using FP ideas in Swift. Attendees should have the latest Xcode installed, should understand what variables and types are in a general sense, and should be able to type quickly (more quickly than ‘hunt and peck’). </p>
+<h2 id="building-a-small-parser-combinator-library-in-swift">Building a small Parser Combinator library in Swift</h2>
+<p>There are so many ways to parse text and so many of them obscure what it is we are trying to do overall. Parser combinators, at their best, allow us to write programs that closely resemble the grammar we are interested in. Swift, with its expressive type system and closures, provides us the tools to create our own parser combinator library. </p>
+<p>In this session, attendees will write a small parser combinator library. We’ll discuss the various choices one can make in building a library and the effects that those choices can have on the resulting API. Attendees should have a working understanding of Swift, Generics, and Closures. Basic knowledge of FP concepts will help but are not strictly required. Attendees should have the latest Xcode installed and should be able to type quickly (more quickly than ‘hunt and peck’). </p>
+
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/jdegoes">
+              jdegoes
+            </a>
+            <time>10/15/2016</time>
+          </div>
+          <div class="body"><p>I&#39;d vote for DSLs in Swift, especially comparing what is and is not possible in Swift and how standard techniques in Haskell or other FP languages have to be adapted for Swift&#39;s type system &amp; semantics.</p>
+<p>But that&#39;s just me, hopefully someone else votes for something. 😄 </p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/ShaneDelmore">
+              ShaneDelmore
+            </a>
+            <time>10/16/2016</time>
+          </div>
+          <div class="body"><p>Protocols sounds fun</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/hirad">
+              hirad
+            </a>
+            <time>10/23/2016</time>
+          </div>
+          <div class="body"><p>I use Swift daily but I&#39;m new to FP. I&#39;d love to hear about Parser Combinators, Generics (still don&#39;t take advantage of them enough), and Monads.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/ErrorNullPointer">
+              ErrorNullPointer
+            </a>
+            <time>11/3/2016</time>
+          </div>
+          <div class="body"><p>Out of curiosity what would the topic &quot;Translating Haskell through meditation&quot; consist of? </p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/ghost">
+              ghost
+            </a>
+            <time>11/5/2016</time>
+          </div>
+          <div class="body"><p>TJ I&#39;m interested in using a couple Clojure platforms to ask what kinds of musical decisions can be automated. I need to practice basics of coding though (I wasn&#39;t a very accomplished developer in any language before I started on Clojure). More generally though, I hope we find time to talk about the relations between typing, FP, and music! </p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/Kent-White">
+              Kent-White
+            </a>
+            <time>11/11/2016</time>
+          </div>
+          <div class="body"><p>Translating Haskell through meditation sounds cool. Any functional programming  in swift would also be cool and bring more variety.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/alexi21">
+              alexi21
+            </a>
+            <time>12/4/2016</time>
+          </div>
+          <div class="body"><p>I would be interested in functional approaches to programming in Swift. Cheers</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/argumatronic">
+              argumatronic
+            </a>
+            <time>12/28/2016</time>
+          </div>
+          <div class="body"><p>Super excited for the parser combinator workshop! </p>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.comment').each(function(i, d){
+          $(d).emoji()
+        })
+      })
+    </script>
+
+  </body>
+</html>

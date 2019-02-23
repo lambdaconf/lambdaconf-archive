@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery.emoji.js"></script>
+    <title>Guide: Daniel Spiewak</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p>
+          <span class="badge open">open</span>
+          <span class="url">lambdaconf/winter-retreat-2017#10</span>
+        </p>
+        <h1>Guide: Daniel Spiewak</h1>
+      </header>
+      <div class="comments">
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/djspiewak">djspiewak</a>
+            <time>9/28/2016</time>
+          </div>
+          <div class="body">
+            <p>Hi, I&#39;m Daniel Spiewak.  I… do a lot of Scala stuff.  I&#39;ve been using Scala for almost exactly 10 years now, and have been on my FP journey for almost exactly as long.  Along the way I&#39;ve worked in academia, learned a bunch of other random languages, pioneered algorithms and data structures, and acquired far more knowledge than I ever wanted on the topic of achieving performance on the JVM.</p>
+<p>In more recent years, I&#39;ve been strongly interested by the problem of building scalable abstractions.  In my view, an abstraction that imposes a serious performance cost (for some problem-specific definition of &quot;serious&quot;) is not a useful abstraction.  Interesting, maybe, but not useful.  But at the same time, higher-order abstractions are incredibly helpful in structuring reasonable software for solving complex problems.  My interest is in having my cake and eating it too.  I&#39;m never happier than when I&#39;m writing incredibly messy, ugly, imperative code that supports a pure, lawful and safe abstraction with extremely high performance.</p>
+<p>In less recent years, I&#39;ve worked extensively in distributed systems at scale, parsing algorithms, compiler design, type theory, theory of computation, attribute grammars, distributed real-time optimistic concurrency, database design and implementation, stochastic modeling and optimization of video games, functional data structures, and even UI design and framework implementation.  I&#39;m still interested in basically all of these things, I&#39;m just not working on them as much of late.</p>
+<p>I&#39;m happy to present on any of these topics, or other things that I&#39;ve completely forgotten about.  Off the complete top of my head, some ideas that might be cool:</p>
+<ul>
+<li><strong>Functional Concurrency</strong>.  A deep dive into the <code>Task</code> monad&#39;s motivation and implementation, with a taste of all the amazing things we can build on top of this primitive.</li>
+<li><strong>Parsing with Derivatives</strong>.  Derivative parsing has had a (well deserved!) resurgence of interest lately, coinciding with the discovery that it is in fact O(n^3) with low constant factors, making it easily the simplest and most elegant practical generalized parsing algorithm.</li>
+<li><strong>Ideal Functional Streaming</strong>.  Describing a pie-in-the-sky ideal pure functional abstraction for performing streaming computation and modeling real-world distributed systems in a lawful and tractable fashion.</li>
+</ul>
+<p>Or, you know… other stuff.</p>
+<p><strong>Please post your suggestions for me below! Vote on ideas by using the thumbs up / thumbs down emojis. Thanks in advance for all of your feedback, and I look forward to being a guide at LambdaConf Winter Retreat 2017!</strong></p>
+
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/ShaneDelmore">
+              ShaneDelmore
+            </a>
+            <time>9/29/2016</time>
+          </div>
+          <div class="body"><p>Task, parsing, Emm, FS2, general good practices for code organization in FP apps for those coming from an OO background. </p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/jdegoes">
+              jdegoes
+            </a>
+            <time>10/15/2016</time>
+          </div>
+          <div class="body"><p>Ideal Functional Streaming or Parsing with Derivatives.</p>
+<p>Or ideally, both. That is, show the development of a simple (not production) streaming library which is then used to implement parsing with derivatives.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/jdegoes">
+              jdegoes
+            </a>
+            <time>10/15/2016</time>
+          </div>
+          <div class="body"><p>However I suspect Task might have broader appeal. 😄 </p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/rezalesmana">
+              rezalesmana
+            </a>
+            <time>10/17/2016</time>
+          </div>
+          <div class="body"><p>Functional Concurrency or Ideal Functional Streaming :D</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/dcsobral">
+              dcsobral
+            </a>
+            <time>10/24/2016</time>
+          </div>
+          <div class="body"><p>I&#39;m a sucker for parsers, so sign me in for that! :)</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/ErrorNullPointer">
+              ErrorNullPointer
+            </a>
+            <time>11/3/2016</time>
+          </div>
+          <div class="body"><p>Parsers would be awesome! I would definitely attend that.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/djspiewak">
+              djspiewak
+            </a>
+            <time>12/30/2016</time>
+          </div>
+          <div class="body"><h2 id="primary-functional-async-on-the-jvm">Primary: Functional Async on the JVM</h2>
+<p>In this talk, we will take a clean-slate approach to designing a reasonable abstraction for async and parallel functional programming in Scala.  We will examine some of the formal and informal foundations for such abstractions, and pay special attention to the unique and fundamental constraints imposed on us by the JVM.  We&#39;ll look at not only how to derive and implement this stuff ourselves, from scratch, for fun and profit, but also how our unicorn solution compares to the various solutions available in Scala today.</p>
+<p>Bring a laptop!  If you enjoy following along as your &quot;speaker&quot; stumbles through live-coding and things that don&#39;t compile because he forgot punctuation, you&#39;re in for a treat.  Alternatively, that laptop works just as well as a means of distraction from the disaster you accidentally walked into.</p>
+<p><strong>Languages</strong>: Scala, with a <em>touch</em> of Haskell and Scheme</p>
+<h2 id="secondary-fun-with-parsing">Secondary: Fun with Parsing</h2>
+<p>This talk will take a step back and look at parsing as an abstract field.  We will walk through the conceptual weeds that lead us to various algorithms and implementations, ideas both good and bad, until we finally find ourselves rethinking things with an exciting new frontier algorithm: derivative parsing.  This talk is less about functional programming and more about &quot;cool algorithms and shiny fun problems&quot;.</p>
+<p>We&#39;re going to cover a lot of conceptual ground here.  If it works the way I hope, you should all come away with a pretty solid understanding of <em>every</em> parsing algorithm in existence.  If it doesn&#39;t work, uh… you may just come away very very confused through no fault of your own.  Which will it be?  Let&#39;s find out together!</p>
+<p><strong>Languages</strong>: Whiteboard</p>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.comment').each(function(i, d){
+          $(d).emoji()
+        })
+      })
+    </script>
+
+  </body>
+</html>

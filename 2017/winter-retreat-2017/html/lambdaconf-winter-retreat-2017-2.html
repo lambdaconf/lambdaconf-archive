@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery.emoji.js"></script>
+    <title>Guide: Alejandro Serrano</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p>
+          <span class="badge open">open</span>
+          <span class="url">lambdaconf/winter-retreat-2017#2</span>
+        </p>
+        <h1>Guide: Alejandro Serrano</h1>
+      </header>
+      <div class="comments">
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">serras</a>
+            <time>8/30/2016</time>
+          </div>
+          <div class="body">
+            <p>I&#39;m Alejandro Serrano, a PhD student in the area of functional programming, currently working in <a href="http://www.cs.uu.nl/staff/mena.html">Utrecht University</a>. I use Haskell for my daily job, but I also like to explore what it is out there, especially in the world of logic (like Prolog) and functional-logic programming (like Curry), and in the large space of theorem proving. I am a fierce defendant of strong typing, although some days I wake up and think &quot;if only we could have true Lisp macros in Haskell and ML...&quot;.</p>
+<p>I am the author of <a href="http://www.apress.com/9781430262503">Beginning Haskell</a> and have worked in enhancing IDEs for the Haskell world as part of <a href="http://serras-haskell-gsoc.blogspot.nl/">two Google Summers of Code</a>. I have developed several open-source libraries, including a <a href="http://hackage.haskell.org/package/t-regex">generalization of regular expressions to arbitrary data types</a> and a <a href="https://git.science.uu.nl/f100183/uchrp/">Constraint Handling Rules engine</a>.</p>
+<p>As I said above, I am working on a PhD thesis. The topic: better type error diagnosis for domain-specific languages (aka DSLs). Full story short: we love embedding domain specific languages; they really make programmers more productive. However, when the compiler is not happy with what the user of the DSL wrote, the error message it gets is given in terms of the host language. Thus, we break the abstraction barrier: internals of the DSL leak through error messages, and even worse, the user of the DSL needs to know them to understand error messages. During the past years, my supervisor and I have developed a wide range of techniques for dealing with this problem. If you are interested, you can check my <a href="http://dblp.uni-trier.de/pers/hd/s/Serrano:Alejandro">page at DBLP</a> where all my papers are indexed.</p>
+<p>I am happy to present most introductory topics in Haskell, depending on the demand. However, based on my expertise, I would be interested in talking about some of these topics:</p>
+<ul>
+<li><p><strong>Techniques for embedding DSLs.</strong> There are manu ways to embed a DSL in Haskell. You can create a combinator language. Use a GADT to get a so-called &quot;initial encoding&quot;. Or arrive to the &quot;final encoding&quot; by means of type classes. Meta-programming also gives you a lot of tools. Furthermore, if your DSL has some notion of sequentially, it makes sense to make it a monad, but how: by hand? using a free monad? using an operational monad?</p>
+<p>The idea is to explore the wide range of possibilities in this area. We shall focus on how good each choice works in terms of syntax, analizability of the code (so we can optimize or detect errors at compile-time) and flexibility in interpretations (so we can write the code once but execute them on different contexts).</p>
+</li>
+<li><p><strong>Haskell type system.</strong> As part of my job, I have scrutinized almost all literature related to Haskell (and GHC) type system:</p>
+<ul>
+<li>The many ways to do polymorphism, from simple parametric polymorphism to higher-rank and impredicative polymorphism.</li>
+<li>The initial distinction between types and kinds and how it is blurred by data type promotion and kind-in-kind.</li>
+<li>Type classes, and its &quot;functional&quot; counterpart, type and data families.<ul>
+<li>The differences between flexible, overlapping, undecidable and incoherent instances.</li>
+<li>Functional dependencies and injectivity annotations.</li>
+</ul>
+</li>
+<li>Extending the language to deal with the local reasoning coming from pattern matching on a GADT.</li>
+<li>How to speak of constraints generically, using the <em>Constraint</em> kind.</li>
+<li>Boxed and unboxed types and how to write generic functions over those with levity polymorphism.</li>
+</ul>
+<p>We can explore together examples of all these features, and argue when and how to use them.</p>
+</li>
+<li><p><strong>Category Theory in Action.</strong> During LambdaConf 2015 I realized that many people (definitely more than I thought!) is interested in category theory. I am definitely not a category theory expert, but rather a category theory user. We can explore the basic notions of category theory: categories, arrows, functors, natural transformations, monads and adjunctions, always keeping an eye at how these notions translate back to functional programming. (Are instances of the Functor class functors?, this kind of questions).</p>
+<p>Furthermore, I would like to show the power of category theory with two beautiful constructions. One is how to enhance the performance of a monad, almost for free, by using the Yoneda construction. The other one is how to understand a monad as the composition of two adjunctions.</p>
+</li>
+</ul>
+<p>I am very interested in exploring the ideas underlying Common Lisp: macros, multimethods... they seem like a completely different style of programming! Or in a broader sense, the meta-programming facilities found in many languages: Lisp macros, Elixir meta-programming, Template Haskell, MetaOCaml. We can even rethink some of those and hack a small meta-compiler! I am also willing to explore the world of &quot;reactive&quot; libraries, from React-like libraries like ClojureScript&#39;s Om, to Purescript&#39;s Halogen or even .NET Reactive Extensions.</p>
+<p><strong>Of course, if you have any other ideas, feel free to comment below! I&#39;m sure we will all have a very enjoyable time at LambdaConf Winter Retreat 2017!</strong></p>
+
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>8/30/2016</time>
+          </div>
+          <div class="body"><p>Or let&#39;s go crazy and build a web framework based on the idea that links are morphisms in a category of pages! I know some Haskell web libraries such as Servant and Spock for the server and Persistent and Esqueleto for the database part. We just need a category theorist then ;)</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/rabbitonweb">
+              rabbitonweb
+            </a>
+            <time>8/31/2016</time>
+          </div>
+          <div class="body"><p>I don&#39;t have any ideas, but I&#39;m just happy you gonna be there :)</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/argumatronic">
+              argumatronic
+            </a>
+            <time>8/31/2016</time>
+          </div>
+          <div class="body"><p>I&#39;m interested in all those, but I would especially like to hear you talk about techniques for embedding DSLs.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/mudphone">
+              mudphone
+            </a>
+            <time>9/7/2016</time>
+          </div>
+          <div class="body"><p>The more practice I can get with various approaches to meta-programming the better. I have some intro to such in Clojure and Elixir. Would love to see examples in other languages. I&#39;m also somewhat intrigued by your work with constraints. Is this related to relational programming (like miniKanran)?</p>
+<p>I&#39;m also interested in your proposed Haskell Type System and Category Theory in Action topics. I am a novice at both.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>9/7/2016</time>
+          </div>
+          <div class="body"><p>Since DSLs seem to be something people like and also something different from other guides, I have sketched a small table of contents of such a talk, to see what people think or would like to add:</p>
+<ul>
+<li>What is an embedded DSL</li>
+<li>Simple combinator libraries</li>
+<li>The difference between syntax and interpretation: shallow vs. deep embeddings</li>
+<li>Initial encodings, including GADT tricks<ul>
+<li>Interpretation as a fold</li>
+</ul>
+</li>
+<li>Finally tagless encoding<ul>
+<li>Interpretation as class instance or module implementation</li>
+</ul>
+</li>
+<li>Computational DSLs using <code>Applicative</code> and <code>Monad</code><ul>
+<li>Removing boilerplate using <code>Free</code> and <code>Operational</code></li>
+</ul>
+</li>
+<li>Encoding binding<ul>
+<li>Higher-Order Abstract Syntax</li>
+<li>Locally Nameless using the <code>unbound</code> library</li>
+</ul>
+</li>
+<li>Meta-programming: Template Haskell and quasi-quotation</li>
+</ul>
+<p>I don&#39;t know if 2 hours would be enough to cover everything! But everything on the above list is everything I know about embedding DSLs, so it is an upper bound ;)</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>9/7/2016</time>
+          </div>
+          <div class="body"><p>I am also open to discuss the contents of the Category Theory in Action talk during one of the afternoons. This is one talk in which I don&#39;t need a projector, just a {white,black}board. If there is another talk which introduces the basic Category Theory concepts, this could be a good way to continue.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/haroldcarr">
+              haroldcarr
+            </a>
+            <time>9/7/2016</time>
+          </div>
+          <div class="body"><p>Hello Alejandro: I would be interested in Category Theory in Action and the Haskell Type System (in that order).</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/nmcb">
+              nmcb
+            </a>
+            <time>9/7/2016</time>
+          </div>
+          <div class="body"><p>Personally? I would benefit and be interested in you doing a <em>Haskell type system</em> talk. Going deep, perhaps compare the system with other languages around? Yes, cat.theory is always interesting, but your  knowledge of Haskell, especially your theoretic level combined with your pragmatism, seems very valuable.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>9/14/2016</time>
+          </div>
+          <div class="body"><p>Given the interest in the <em>Haskell type system</em> talk, here is a foreseeable table of contents:</p>
+<p><strong>Part 1: the basics</strong></p>
+<ul>
+<li>Hindley-Damas-Milner type systems<ul>
+<li>Types vs. type schemes</li>
+<li>Simple checking and inference with algorithm _W_</li>
+</ul>
+</li>
+<li>Qualified types: what you have at the left of =&gt;<ul>
+<li>Type classes and type families</li>
+<li>Termination: flexible and undecidable instances</li>
+<li>Choice: overlapping and incoherent instances</li>
+<li>Improvement: functional dependencies and injectivity annotations</li>
+<li>Elaboration: dictionaries and coercions</li>
+</ul>
+</li>
+<li>Higher-kinded types, * version</li>
+<li>Qualified constructors and pattern matching: GADTs</li>
+<li>Inference with constraints<ul>
+<li>Architectural overview</li>
+<li>Skolemization, ambiguity and undischargement errors</li>
+</ul>
+</li>
+</ul>
+<p><strong>Part 2: going crazy with quantification</strong></p>
+<ul>
+<li>More on kinds<ul>
+<li>Introducing new kinds by data type promotion</li>
+<li>Reflecting on value level: the <code>singletons</code> construction</li>
+<li>Kind polymorphism</li>
+<li>Unboxed types: # vs *</li>
+</ul>
+</li>
+<li>Higher-rank and impredicative polymorphism<ul>
+<li>(Un)decidability of these extensions</li>
+</ul>
+</li>
+<li>Quantifying over constraints: the Constraint kind<ul>
+<li>Programming your own instance search procedure</li>
+</ul>
+</li>
+<li>Going dependent: <em>-in-</em><ul>
+<li>Value-level vs type/kind/sort-level</li>
+<li>Levity or representation polymorphism</li>
+</ul>
+</li>
+<li>Generic programming<ul>
+<li>Describing regular types with generics</li>
+<li>Generic deriving and default implementations</li>
+<li>Reflection using <code>Typeable</code>, <code>Dynamic</code> and <code>Data</code></li>
+</ul>
+</li>
+<li>Bonus: refinement types with LiquidHaskell</li>
+</ul>
+<p>Edit: expand the &quot;generic programming&quot; section
+Edit: added singletons and LiquidHaskell</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/jdegoes">
+              jdegoes
+            </a>
+            <time>10/15/2016</time>
+          </div>
+          <div class="body"><p>All of these are equally interesting to me, but I&#39;m slightly biased toward Haskell type system and category theory (especially if the latter gets as far as &quot;real&quot; monads, comonads, etc.).</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/rezalesmana">
+              rezalesmana
+            </a>
+            <time>10/17/2016</time>
+          </div>
+          <div class="body"><p>DSL would be great to hear. Category Theory is great as well. </p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/purefunctions">
+              purefunctions
+            </a>
+            <time>10/25/2016</time>
+          </div>
+          <div class="body"><p>Free and other &#39;scary&#39; monads for beginners :)
+The many ways to do polymorphism</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/ErrorNullPointer">
+              ErrorNullPointer
+            </a>
+            <time>11/3/2016</time>
+          </div>
+          <div class="body"><p> Haskell type system would be cool</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>11/3/2016</time>
+          </div>
+          <div class="body"><p>Given the input here, I am considering devoting my slot to Haskell Type System. Two hours might be even too little for so much information, though!</p>
+<p>If @jdegoes finds it OK, we can arrange a room for speaking about Category Theory in the afternoons/evenings a couple of days. Maybe one day we can discuss the basics (category, functor, natural transformations, monads), and the other day look at the topics of the proposed Category Theory in Action (Yoneda for better performance, monad as composition of adjoints). Then people could join either day.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/LambdaMathematician">
+              LambdaMathematician
+            </a>
+            <time>11/3/2016</time>
+          </div>
+          <div class="body"><p>+1 Category theory</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>11/4/2016</time>
+          </div>
+          <div class="body"><p>@haroldcarr @rezalesmana @sillypantstoan @mudphone (and any others)
+When we speak about &quot;Category Theory&quot;, at what level are we talking about? That would be very helpful in trying to focus the topic.</p>
+<p>My current idea is to have a &quot;mini-course&quot; on Category Theory, which should touch at least category, universal constructions (product, sum, terminal and initial objects), functor, natural transformation, adjoint, free-ness, (co-)monads, (co-)algebras, Yoneda lemma. My aim would not be to formally prove all properties, but rather try to discover them by looking at examples in Haskell (and maybe Scala also).</p>
+<p>One possibility I discussed with the organizers is to split such a &quot;mini-course&quot; into 4 or 5 small sessions of 30-45 minutes each day, instead of putting everything together into one big talk where people might get lost. What do you think? Any input is welcome :)</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/mudphone">
+              mudphone
+            </a>
+            <time>11/4/2016</time>
+          </div>
+          <div class="body"><p>My understanding of Category Theory is limited to getting stuck at the first few chapters of various books on the topic, and watching all of Bartosz Milewski&#39;s <a href="https://www.youtube.com/watch?v=I8LbkfSSR58&amp;list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_">Category Theory For Programmers playlist</a>. Your suggestion of using Haskell to understand Category Theory sounds helpful to me.</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>11/4/2016</time>
+          </div>
+          <div class="body"><p>As a matter of concepts, I am definitely going to cover much less than Bartosz&#39;s lectures, given the shorter amount of time. My aim is to understand more ideas like:</p>
+<ul>
+<li>How does the general concept of &quot;monad&quot; and &quot;functor&quot; relate to Haskell&#39;s <code>Monad</code> and <code>Functor</code>.</li>
+<li>How does a natural transformation look like in Haskell? (Hint: it is a polymorphic function)</li>
+<li>How do we model algebraic data types in categorical terms?</li>
+</ul>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/gilligan">
+              gilligan
+            </a>
+            <time>11/8/2016</time>
+          </div>
+          <div class="body"><p>My vote is definitely for Category Theory. I think CT is something where is such an enormous gain in sitting in the same room so that you can ask questions. Often it is some small detail I get totally stuck with.. </p>
+<p><strong>anyway</strong>: CT baby! :)</p>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/serras">
+              serras
+            </a>
+            <time>11/9/2016</time>
+          </div>
+          <div class="body"><p>Here is a concrete description of <em>Category Theory Through Functional Programming</em>. Any suggestion is welcome, both in the topics and in the way in which they can be explained.</p>
+<h3 id="category-theory-through-functional-programming">Category Theory Through Functional Programming</h3>
+<p><strong>Language</strong>: snippets will be presented in Haskell and Scala.</p>
+<p><strong>Target Level</strong>: Fire Lubline / Ice Skrig</p>
+<p>Functional programming is taking over the world. And with it, categorical thinking is permeating into our code. Notions like functor, monad or free-ness are usual when diving into Haskell or Typelevel Scala. Category theory effectively gives vocabulary for design patterns: the authors of <a href="http://www.haskellforall.com/2012/08/the-category-design-pattern.html">1</a>, <a href="http://www.haskellforall.com/2012/09/the-functor-design-pattern.html">2</a> and <a href="https://www.manning.com/books/functional-and-reactive-domain-modeling">3</a> (you should definitely read this book!) make this connection explicit.</p>
+<p>In order to take advantage of these concepts, it is useful to take a step back and understand the underlying ideas of Category Theory and how they all fit together. Let me be clear: diving into intrincate mathematical theories is not my goal. I want you to understand Category Theory in a practical way, in relation to programming. This relation is two-way:</p>
+<ul>
+<li>Code provides us many examples of categorical structures,</li>
+<li>Conversely, in many cases we can implement categorical notions <a href="https://hackage.haskell.org/package/base-4.9.0.0/docs/Control-Category.html">directly inside our favorite programming language</a>.</li>
+</ul>
+<p>As a consequence, in order to obtain the maximum return for your time investment, you should have an intermediate knowledge of either Haskell or Scala. If you know how to declare a type class or a trait, what a higher-kinded type (or type constructor) is and have ever used a monad, you are ready. Recent versions of the compiler are recommended, for Haskell GHC 8 is the minimum.</p>
+<p>Teaching tons of concepts in just one session makes no sense. Ideas need some time to sink before you can effectively build upon them. Thus, our exploration of Category Theory will proceed in daily small pills, of around 45 minutes every day. The (preliminary) list of topics is:</p>
+<ol>
+<li>Introduction to categories.</li>
+<li>Simple universal constructions: (co)products, terminal and initial objects.</li>
+<li>The principle of duality.</li>
+<li>Functors.</li>
+<li>Natural transformations.</li>
+<li>(Co)monads.</li>
+<li>Adjoints and their relation to (co)monads.</li>
+<li>Exponentials.</li>
+<li>Free constructions.</li>
+<li>(Initial) algebras for a functor.</li>
+<li>The Yoneda Lemma.</li>
+<li>Monoidal functors.</li>
+</ol>
+</div>
+        </div>
+        <div class="comment">
+          <div class="meta">
+            <a class="person" href="https://github.com/ghost">
+              ghost
+            </a>
+            <time>12/29/2016</time>
+          </div>
+          <div class="body"><p>Alejandro, this looks AWESOME. would you recommend attempting to transcribe or implement versions of the code snippets from the talk into Clojure as an exercise? I&#39;m a little more familiar w type theory than I am w category theory so I could be way off in terms of it&#39;s relation to lisps, but i&#39;d be curious for the challenge anyway </p>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.comment').each(function(i, d){
+          $(d).emoji()
+        })
+      })
+    </script>
+
+  </body>
+</html>
